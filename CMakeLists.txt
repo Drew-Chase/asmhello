@@ -15,8 +15,6 @@ if (CMAKE_BUILD_TYPE STREQUAL "Release")
             /INCREMENTAL:NO     # no padding for incremental relinks
             /DYNAMICBASE:NO     # opt out of ASLR...
             /FIXED              # removes the .reloc section
-            /MERGE:.rdata=.text # imports + readonly data is moved into the code section
-            /MERGE:.data=.text # imports + readonly data is moved into the code section
             /ALIGN:16           # aligns the memory to 16 bytes instead of 512 default
             /FILEALIGN:16       # aligns the file to 16 bytes instead of 512 bytes
             /MANIFEST:NO        # Removes the manifest file.
