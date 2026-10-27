@@ -2,16 +2,11 @@ bits 64                                 ; This tells the compiler its a 64 bit p
 default rel                             ; This tells the compiler to make memory references relative to the current instruction.
 
 section .data
-msg     db "Hello World", 13, 10        ; 13 = \n and 10 = \r
+msg     db "Hello World", 13, 10        ; 13 = \r and 10 = \n
 msg_len equ $ - msg
-
-section .bss
-written resd 1
-
 
 section .text
 global main
-
 
 NtWriteFile:
     mov     r10, rcx
@@ -49,7 +44,7 @@ main:
     call    NtWriteFile
 
 
-    ; Exit the application with exit code 1
+    ; Exit the application with exit code 0
     mov     rcx, -1                     ; argument 1 is -1 meaning the current process.
     xor     edx, edx                    ; Sets argument 2 to null or 0 which will set the exit code to 0
     call    NtTerminateProcess
